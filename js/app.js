@@ -1,8 +1,8 @@
-var Cat = function() {
-    this.name = ko.observable('Tabby')
-    this.clicks = ko.observable(0)
-    this.imgSrc = 'img/cat.jpg'
-    this.nickNames = ko.observableArray(['Tabtab', 'T-Bone', 'Mr. T', 'Tabitha'])
+var Cat = function(data) {
+    this.name = ko.observable(data.name)
+    this.clicks = ko.observable(data.clicks)
+    this.imgSrc = ko.observable(data.imgSrc)
+    this.nickNames = ko.observableArray(data.nickNames)
 
     this.returnLevel = ko.computed(function() {
         return this.clicks() < 10 ? 'Newborn':
@@ -14,7 +14,12 @@ var Cat = function() {
 }
 
 function ViewModel()  {
-    this.currentCat = ko.observable(new Cat())
+    this.currentCat = ko.observable(new Cat({
+        name: 'Tabby',
+        clicks: 0,
+        imgSrc: 'img/cat.jpg',
+        nickNames: ['Tabtab', 'T-Bone', 'Mr. T', 'Tabitha']
+    }))
 
     this.incrementerCount = function() {
         this.clicks(this.clicks() + 1)
