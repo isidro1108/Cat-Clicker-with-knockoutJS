@@ -8,14 +8,14 @@
 </head>
 <body>
     <div>
-        <h2 data-bind="text: name"></h2>
-        <h3 data-bind="text: returnLevel()"></h3>
-        <div data-bind="text: clicks"></div>
-        <img src="" alt="cute-cat" data-bind="click: incrementerCount, attr: {src: imgSrc}">
+        <h2 data-bind="text: currentCat().name"></h2>
+        <h3 data-bind="text: currentCat().returnLevel()"></h3>
+        <div data-bind="text: currentCat().clicks"></div>
+        <img src="" alt="cute-cat" data-bind="click: incrementerCount, attr: {src: currentCat().imgSrc}">
     </div>
     <div>
         <h3>Nicknames</h3>
-        <ul data-bind="foreach: nickNames">
+        <ul data-bind="foreach: currentCat().nickNames">
             <li data-bind="text: $data"></li>
         </ul>
     </div>
